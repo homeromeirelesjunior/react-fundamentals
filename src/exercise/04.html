@@ -47,6 +47,18 @@
         )
     }
 
+    function Soma({num1, num2}) {
+        return ( 
+            <React.Fragment>
+                { /* React.Fragment permite agrupar vários elementos HMTL dentro de um mesmo React e retorná-los em conjunto */}
+                <p>O resultado da soma é: </p>
+                <div>{num1 + num2}</div>
+             </React.Fragment>
+        )
+
+        
+    }
+
     // Renderizar = processar um código JS para gerar elementos HTML
 
     // Usando o componente personalizado representado pela função Message
@@ -56,12 +68,15 @@
     // de tags HTML comuns.
     element = (
         <div className="container">
+            {/* quando for necessário passar pros cujo valor NÃO SEJ string, é necessário passar o valor entre chaves {} */}
+            <Soma num1={100} num2={200} />
             <Message subject="mamãe" greeting="Alô" />
             <Message greeting="Bem-vindo" subject="humano" />
             { Message({subject: 'Homero', greeting: 'Olá'})}
         </div>
     )
-  
+        
+
 
     // 💯 This is only the first step to making actual React components. The rest is in the extra credit!
     ReactDOM.render(element, document.getElementById('root'))
