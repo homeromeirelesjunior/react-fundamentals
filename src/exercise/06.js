@@ -3,8 +3,6 @@
 
 import * as React from 'react'
 
-
-function UsernameForm({onSubmitUsername}) {
   // 🐨 add a submit event handler here (`handleSubmit`).
   // 💰 Make sure to accept the `event` as an argument and call
   // `event.preventDefault()` to prevent the default behavior of form submit
@@ -23,24 +21,63 @@ function UsernameForm({onSubmitUsername}) {
 
     // criando uma ref, um recurso do React para acessar conteúdo
     // de elementos de formulários
+
+function UsernameForm({onSubmitUsername}) {
+
     const usernameE1 = React.useRef()
 
+    // criar uma variável de estado do React
+    // uma variável de estado mantém uma informação mesmo que o conteúdo da página
+    // seja atualizado
+    // para ler o conteúdo da variável de estado, podemos acessá-la diretamente.
+    // no entanto, para alterar seu conteúdo, umamos uma função set.
 
+    // error -> variável de estado
+    // setError -> função de atualização da variável de estado
+    // A função useState aceita um parâmetro que é o VALOR INICIAL da variável
+    // de estado. Ou seja, nessa caso, error tem um valor inical de string vazia.
 
-      return (
+    // useState() retorna um vetor que normalmente é recebido via desestruturação
+    const [msg, setMsg] = React.useState('')
+    const [username, setUsername] = React.useState('')
+    
+    //const ret = React.useState('')
+    //let estado = ret[0]
+    //let setEstado = ret[1]
+
+    function handleChange(event) {
+        // capturando o valor do input
+        const val = event.target.value
+
+        // armazena na variável de estado o valor do input já convetido 
+        // para minúsculas
+        setUsername(val.toLowerCase())
+        
+        // o input será válido se seu contéudo for idêntico 
+        // ao próprio conteúdo em minúsculas
+        //const isValid = val == val.toLowerCase()
+
+        // atulizando o estado
+        //setMsg(isValid ? '' : 'O valor informado deve estar em minúsculas.')
+    }
+
+    return (
         <form onSubmit={handleSubmit}>
             <div>
            <label>Username:</label>
            {/* Associando o ref usernameE1 ao input*/}
-           <input  ref={usernameE1} id="username" type="text" />
+           <input  ref={usernameE1} id="username" type="text" onChange={handleChange} value={username} />
              </div>
+             <div style={{ color: 'red'}}>{msg}</div>
               <button type="submit">Submit</button>
         </form>
-  )
+    )
+
+
   
-      function handleSubmit(event) {
+    function handleSubmit(event) {
         //const username = document.querySelector('#username').value
-        // Previne o recarregamento do formuáleario
+        // Previne o recarregamento do formulário
         event.preventDefault()
 
         const username = usernameE1.current.value
