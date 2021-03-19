@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-bt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componentes de Classe</title>
+</head>
+<body>
+
+  <div id="root"></div>
+  
+  <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
+
+  <script type="text/babel">
+
+        class ComponenteClasse extends React.Component {
+            render() {
+                return <h1>Este é um componente de classe.</h1>;
+        }
+    }
+
+    ReactDOM.render(<ComponenteClasse />, document.getElementById('root'))
+
+  </script>
+  
+</body>
+</html>
